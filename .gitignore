@@ -31,3 +31,22 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Backend (Java) ###
+backend/target/
+backend/.idea/
+backend/*.iml
+
+### Frontend (React) ###
+frontend/node_modules/
+frontend/build/
+frontend/.env
+
+### Segredos (NUNCA versionar!) ###
+**/application-secrets.properties
+*.env
+.env.local
+**/.env
+
+### Logs ###
+*.log
