@@ -43,43 +43,21 @@ public class Usuario {
     // 2. Mercado Livre autoriza e retorna um token
     // 3. Salvamos esse token aqui
     // 4. Usamos ele para fazer requisições à API do Mercado Livre
-
     @Column(length = 500)
     private String mercadoLivreToken;
 
-    /**
-     * Token de REFRESH do Mercado Livre
-     * <p>
-     * Tokens de acesso expiram (geralmente em 6 horas).
-     * O refresh token serve para pegar um novo token sem o usuário fazer login de novo.
-     * <p>
-     * Analogia:
-     * - Access Token = ingresso de cinema (expira depois do filme)
-     * - Refresh Token = carteirinha de sócio (renova o ingresso quando expira)
-     */
+    // TOKEN Refresh: Os tokens do MELI expiram a cada 6 horas, o refresh token pega
+    // o novo token sem a necessidade do usuário fazer o login.
     @Column(length = 500)
     private String mercadoLivreRefreshToken;
 
-    /**
-     * Data e hora em que o usuário foi criado
-     * <p>
-     * updatable = false: Depois que é definido, nunca muda
-     * Útil para relatórios, analytics, etc.
-     * <p>
-     * Exemplo: "2026-05-07T18:30:00"
-     */
+    // DATA E HORA: Inserido no momento que o usuário é criado, não pode ser nulo
+    // e após ser definido não pode mais ser alterado.
     @Column(nullable = false, updatable = false)
     private LocalDateTime criadoEm;
 
-    /**
-     * Método executado AUTOMATICAMENTE ANTES de salvar no banco pela primeira vez
-     *
-     * @PrePersist é um "hook" (gancho) do JPA
-     * Quando você faz: usuarioRepository.save(usuario)
-     * Antes de inserir no banco, o JPA executa este método
-     * <p>
-     * Resultado: criadoEm é sempre preenchido automaticamente!
-     */
+    // METODO AUXILIAR: @PrePersist é um hook do JPA, antes de inserir no banco o JPA
+    // executa esse metodo. Resultado: "criadoEm" é preenchido automaticamente.
     @PrePersist
     protected void onCreate() {
         criadoEm = LocalDateTime.now();
