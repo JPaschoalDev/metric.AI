@@ -3,7 +3,7 @@ package com.metricai.api.dto;
 import lombok.Data;
 
 // DTO (Data Transfer Object) - Requisição de Cadastro
-// Essa classe representa os dados que o FRONTEND envia quando o usuário se cadastra no sistema
+// Classe que representa os dados que o FRONTEND envia quando o usuário se cadastra no sistema
 
 // FLUXO:
 // 1. Usuário preenche formulário no React (nome, email, senha)

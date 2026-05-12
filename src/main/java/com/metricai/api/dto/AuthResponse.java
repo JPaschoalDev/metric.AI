@@ -3,7 +3,7 @@ package com.metricai.api.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-// DTO - Resposta de Autenticação (Login ou cadastro bem sucessido)
+// DTO (Data Transfer Object) - Resposta de Autenticação
 // Quando o usuário faz login ou se cadastra com sucesso o beckend retorna essa class como JSON
 
 // Fluxo:

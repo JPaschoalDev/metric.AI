@@ -1,0 +1,46 @@
+### TESTE 1: Cadastrar Usuário
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nome": "João Paschoal",
+  "email": "joao@metricai.com",
+  "senha": "123456"
+}
+
+### TESTE 2: Login com sucesso
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "joao@metricai.com",
+  "senha": "123456"
+}
+
+### TESTE 3: Login com senha errada (deve dar erro 401)
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "joao@metricai.com",
+  "senha": "senhaerrada"
+}
+
+### TESTE 4: Cadastrar email duplicado (deve dar erro 400)
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nome": "Outro Nome",
+  "email": "joao@metricai.com",
+  "senha": "outrasenha"
+}
+
+### TESTE 5: Login com JWT REAL
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "joao@metricai.com",
+  "senha": "123456"
+}
