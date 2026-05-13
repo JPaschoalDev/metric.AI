@@ -45,7 +45,7 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9hb0BtZ
 
 ### [4] INICIAR OAUTH - Retorna URL para autorizar
 GET http://localhost:8080/api/mercadolivre/auth
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9hb0BtZXRyaWNhaS5jb20iLCJzdWIiOiIxIiwiaWF0IjoxNzc4Njg1ODkwLCJleHAiOjE3Nzg3NzIyOTB9.CIFrLeDhr8glICsuspyea8cPQzsrA-U9Hvjc5WAsya4Q4_LZVaxpdxyXRcjvqbldZlmYj82ULLkIcZq_Ff5zSQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9hb0BtZXRyaWNhaS5jb20iLCJzdWIiOiIxIiwiaWF0IjoxNzc4Njg3OTYyLCJleHAiOjE3Nzg3NzQzNjJ9.KwcOOXnpAnnIgQxKHHJR4P3UVZF2I5LYnogH_wprXE5EchGwIirJ1uZoX43OTkolfAdR8_hIZ5ubsUTEKBWPvQ
 
 ### [5] STATUS - Verifica se está conectado ao ML
 GET http://localhost:8080/api/mercadolivre/status
@@ -55,6 +55,8 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9hb0BtZ
 
 ### [6] CALLBACK MANUAL - Trocar código por token
 ### Cole o code recebido do Mercado Livre aqui:
-GET http://localhost:8080/api/mercadolivre/callback?code=TG-6a0497f2b5074e0001635836-201164019
+GET http://localhost:8080/api/mercadolivre/callback?code=TG-6a049cd05f00eb0001d22d15-201164019
 
-###
+### [7] TESTAR TOKEN - Buscar dados do usuário no Mercado Livre
+GET https://api.mercadolibre.com/users/me
+Authorization: Bearer APP_USR-8801751563274422-051311-a619dc29fa3366d0420ae35ae40ca02e-201164019
