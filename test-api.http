@@ -1,8 +1,12 @@
-### ========================================
-### TESTES - INTEGRAÇÃO MERCADO LIVRE
-### ========================================
+### ============================================
+### METRIC.AI - ARQUIVO DE TESTES DA API
+### ============================================
 
-### TESTE 1: Fazer login primeiro (para pegar o token)
+### ============================================
+### AUTENTICAÇÃO
+### ============================================
+
+### [1] LOGIN - Retorna o token JWT
 POST http://localhost:8080/api/auth/login
 Content-Type: application/json
 
@@ -11,10 +15,46 @@ Content-Type: application/json
   "senha": "123456"
 }
 
-### TESTE 2: Iniciar autenticação com Mercado Livre
-GET http://localhost:8080/api/mercadolivre/auth
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9hb0BtZXRyaWNhaS5jb20iLCJzdWIiOiIxIiwiaWF0IjoxNzc4NjMyMDcxLCJleHAiOjE3Nzg3MTg0NzF9.VFpA7wRm2KNV3gWnuWNo6VteRYRLLuqAdi9zDuot7IwaCnQIUXJP0qPkzP7ckJ151tBswPXoTDeDSjHHy4qqFg
+###
 
-### TESTE 3: Verificar status da conexão
+### [2] CADASTRO - Criar novo usuário
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nome": "Novo Usuario",
+  "email": "novo@metricai.com",
+  "senha": "123456"
+}
+
+###
+
+### ============================================
+### USUÁRIO (rotas protegidas - precisa token)
+### ============================================
+
+### [3] MEUS DADOS - Retorna dados do usuário logado
+GET http://localhost:8080/api/usuarios/me
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9hb0BtZXRyaWNhaS5jb20iLCJzdWIiOiIxIiwiaWF0IjoxNzc4Njg1ODkwLCJleHAiOjE3Nzg3NzIyOTB9.CIFrLeDhr8glICsuspyea8cPQzsrA-U9Hvjc5WAsya4Q4_LZVaxpdxyXRcjvqbldZlmYj82ULLkIcZq_Ff5zSQ
+
+###
+
+### ============================================
+### MERCADO LIVRE
+### ============================================
+
+### [4] INICIAR OAUTH - Retorna URL para autorizar
+GET http://localhost:8080/api/mercadolivre/auth
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9hb0BtZXRyaWNhaS5jb20iLCJzdWIiOiIxIiwiaWF0IjoxNzc4Njg1ODkwLCJleHAiOjE3Nzg3NzIyOTB9.CIFrLeDhr8glICsuspyea8cPQzsrA-U9Hvjc5WAsya4Q4_LZVaxpdxyXRcjvqbldZlmYj82ULLkIcZq_Ff5zSQ
+
+### [5] STATUS - Verifica se está conectado ao ML
 GET http://localhost:8080/api/mercadolivre/status
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9hb0BtZXRyaWNhaS5jb20iLCJzdWIiOiIxIiwiaWF0IjoxNzc4NjMyMDcxLCJleHAiOjE3Nzg3MTg0NzF9.VFpA7wRm2KNV3gWnuWNo6VteRYRLLuqAdi9zDuot7IwaCnQIUXJP0qPkzP7ckJ151tBswPXoTDeDSjHHy4qqFg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9hb0BtZXRyaWNhaS5jb20iLCJzdWIiOiIxIiwiaWF0IjoxNzc4NjgzOTczLCJleHAiOjE3Nzg3NzAzNzN9.N5BJvuEUca9LcW-tmTMLBjW8YyeHfTC3OzkmE74vqCD7IgLTAvOxp0XyKWZTeNpuTGLD0ZyDd2lCU7FBQgq4jA
+
+###
+
+### [6] CALLBACK MANUAL - Trocar código por token
+### Cole o code recebido do Mercado Livre aqui:
+GET http://localhost:8080/api/mercadolivre/callback?code=TG-6a0497f2b5074e0001635836-201164019
+
+###

@@ -2,7 +2,6 @@ package com.metricai.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.PropertySource;
 
 //     [==== Metric.AI =====]
 // CLASSE PRINCIPAL DA APLICAÇÃO
@@ -13,7 +12,6 @@ import org.springframework.context.annotation.PropertySource;
 // 2. @EnableAutoConfiguration: Spring configura tudo automaticamente
 // 3. @ComponentScan: Spring procura por controllers, services, repositories
 @SpringBootApplication
-@PropertySource("classpath:application-secrets.properties")
 public class MetricAiApiApplication {
 
     // METODO MAIN
