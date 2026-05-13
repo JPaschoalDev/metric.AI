@@ -1,14 +1,8 @@
-### TESTE 1: Cadastrar Usuário
-POST http://localhost:8080/api/auth/register
-Content-Type: application/json
+### ========================================
+### TESTES - INTEGRAÇÃO MERCADO LIVRE
+### ========================================
 
-{
-  "nome": "João Paschoal",
-  "email": "joao@metricai.com",
-  "senha": "123456"
-}
-
-### TESTE 2: Login com sucesso
+### TESTE 1: Fazer login primeiro (para pegar o token)
 POST http://localhost:8080/api/auth/login
 Content-Type: application/json
 
@@ -17,30 +11,10 @@ Content-Type: application/json
   "senha": "123456"
 }
 
-### TESTE 3: Login com senha errada (deve dar erro 401)
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
+### TESTE 2: Iniciar autenticação com Mercado Livre
+GET http://localhost:8080/api/mercadolivre/auth
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9hb0BtZXRyaWNhaS5jb20iLCJzdWIiOiIxIiwiaWF0IjoxNzc4NjMyMDcxLCJleHAiOjE3Nzg3MTg0NzF9.VFpA7wRm2KNV3gWnuWNo6VteRYRLLuqAdi9zDuot7IwaCnQIUXJP0qPkzP7ckJ151tBswPXoTDeDSjHHy4qqFg
 
-{
-  "email": "joao@metricai.com",
-  "senha": "senhaerrada"
-}
-
-### TESTE 4: Cadastrar email duplicado (deve dar erro 400)
-POST http://localhost:8080/api/auth/register
-Content-Type: application/json
-
-{
-  "nome": "Outro Nome",
-  "email": "joao@metricai.com",
-  "senha": "outrasenha"
-}
-
-### TESTE 5: Login com JWT REAL
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-
-{
-  "email": "joao@metricai.com",
-  "senha": "123456"
-}
+### TESTE 3: Verificar status da conexão
+GET http://localhost:8080/api/mercadolivre/status
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9hb0BtZXRyaWNhaS5jb20iLCJzdWIiOiIxIiwiaWF0IjoxNzc4NjMyMDcxLCJleHAiOjE3Nzg3MTg0NzF9.VFpA7wRm2KNV3gWnuWNo6VteRYRLLuqAdi9zDuot7IwaCnQIUXJP0qPkzP7ckJ151tBswPXoTDeDSjHHy4qqFg
